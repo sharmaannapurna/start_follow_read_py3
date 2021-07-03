@@ -6,8 +6,6 @@ All steps in this repository are shown with the [ICDAR2017 Competition on Handwr
 
 This code is free for academic and research use. For commercial use of our code and methods please contact [BYU Tech Transfer](techtransfer.byu.edu).
 
-We will also include pretrained models, results, and the segmentation data inferred during training. These can be found on the [release page](https://github.com/cwig/start_follow_read/releases).
-
 
 ## Dependencies
 
