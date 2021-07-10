@@ -2,25 +2,20 @@
 
 This repository is the implementation of the methods described in the paper [Start, Follow, Read: Full-Page End-to-end Handwriting Recognition](http://openaccess.thecvf.com/content_ECCV_2018/html/Curtis_Wigington_Start_Follow_Read_ECCV_2018_paper.html). The code is heavily based on the original code as released by the authors. Our repository has some minor changes to make it run with python3 and pytorch=1.3.
 
-All steps in this repository are shown with the [ICDAR2017 Competition on Handwritten Text Recognition on the READ Dataset](https://scriptnet.iit.demokritos.gr/competitions/8/).
-
+All steps in this repository are shown with the [ICDAR2017 Competition on Handwritten Text Recognition on the READ Dataset](https://scriptnet.iit.demokritos.gr/competitions/8/) and are the same as mentioned in the Author's repository.
 This code is free for academic and research use. For commercial use of our code and methods please contact [BYU Tech Transfer](techtransfer.byu.edu).
 
 
 ## Dependencies
 
-The dependencies are all found in `environment.yaml`. They are installed as follows.
+The dependencies are all found in `sfr_env_environment.yaml`. They are installed as follows.
 ```
-conda env create -f environment.yaml
+conda env create -f sfr_env_environment.yaml
 ```
 
 The environment is activated as `source activate sfr_env`.
 
-You will need to install the following libraries from source. warp-ctc is needed for training.
-PyKaldi is used for the language model. A pretrained Start, Follow, Read network can run
-without either.
-- [warp-ctc](https://github.com/SeanNaren/warp-ctc)
-- [PyKaldi](https://github.com/pykaldi/pykaldi)
+As opposed to original SFR repository, this repository does not use LM decoding.
 
 ## Prepare Data
 
