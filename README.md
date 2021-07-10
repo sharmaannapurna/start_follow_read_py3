@@ -31,6 +31,11 @@ tar jxf Train-B_batch1.tbz2
 tar jxf Train-B_batch2.tbz2
 cd ..
 ```
+The data folder will have following contents:
+Data
+|-Train-A
+|-Train-B_batch1
+|-Train-B_batch2
 
 #### Prepare Train-A
 
