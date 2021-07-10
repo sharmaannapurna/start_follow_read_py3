@@ -4,7 +4,7 @@ This repository is the implementation of the methods described in the paper [Sta
 
 All steps in this repository are shown with the [ICDAR2017 Competition on Handwritten Text Recognition on the READ Dataset](https://scriptnet.iit.demokritos.gr/competitions/8/) and are the same as mentioned in the Author's repository.
 This code is free for academic and research use. For commercial use of our code and methods please contact [BYU Tech Transfer](techtransfer.byu.edu).
-
+The steps presented in this repository are to make the code running on single GPU. If you have high GPU resources available, please follow the base repository by authors to efficiently use the same.
 
 ## Dependencies
 
@@ -19,7 +19,7 @@ As opposed to original SFR repository, this repository does not use LM decoding.
 
 ## Prepare Data
 
-Download Train-A and Train-B from the competition [website](https://scriptnet.iit.demokritos.gr/competitions/8/). You need `Train-A.tbz2`, `Train-B_batch1.tbz2`, `Train-B_batch2.tbz2`. Put them in the data folder. You will also need `Test-B2.tgz` if you plan on submitting results to the competition website.
+Download Train-A and Train-B from the competition [website](https://scriptnet.iit.demokritos.gr/competitions/8/). You need `Train-A.tbz2`, `Train-B_batch1.tbz2`, `Train-B_batch2.tbz2`. Put them in the data folder.
 
 #### Extract Files
 
@@ -34,8 +34,8 @@ cd ..
 
 #### Prepare Train-A
 
-This process can be a bit slow because the normalization code is inefficient.
-This extracts start-of-line positions, line follower targets, and normalized line images.
+train-A is the subset of dataset with start-of-line positions and line follower target annotations.
+The following script extracts start-of-line positions, line follower targets, and normalized line images.
 
 ```
 python preprocessing/prep_train_a.py data/Train-A/page data/Train-A data/train_a data/train_a_training_set.json data/train_a_validation_set.json  
@@ -70,16 +70,13 @@ python utils/character_set.py data/train_a_training_set.json data/train_a_valida
 
 ## Pretraining
 
-In this example training is performed using a 32 pixel tall images.
-I would recommend training on 32 pixel tall images.
-Then training the line-level HWR network is retrained afterwards at a high resolution.
-The 32 pixel network trains faster and is good enough for the alignment.
+Pretraining is performed using 32 pixel tall images. One can change this value and experiment.
+During final training the line-level HWR network is retrained afterwards at a high resolution.
+The 32 pixel network is recommended by SFR authors which trains faster and is good enough for the alignment.
 
 
-All three networks can fit on a 12 GB GPU for pretraining.
-Sorry, no graphs of the training and validation loss at this time. Each network will stop training after 10 epochs without any improvement.
+All three networks can fit on a 12 GB GPU for pretraining. Each network will stop training after 10 epochs without any improvement.
 
-A sample SLURM file to pretrain can be found in `slurm_examples/pretrain.sh`. The individual commands for each network are given below.
 
 #### Start of Line
 
